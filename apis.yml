@@ -1,0 +1,219 @@
+aid: zksync
+url: https://raw.githubusercontent.com/api-evangelist/zksync/refs/heads/main/apis.yml
+name: zkSync
+kind: company
+description: >-
+  zkSync is a family of Ethereum Layer 2 scaling networks from Matter Labs built on
+  zero-knowledge proofs. zkSync Era is the production zkEVM rollup; the ZK Stack is
+  the open-source framework used to deploy ZK Chains that interoperate in the Elastic
+  Network. Developers integrate via standard JSON-RPC (with zkSync-specific extensions
+  for paymasters, account abstraction, and L1<->L2 messaging), the zksync-ethers /
+  zksync2-* SDKs, hardhat-zksync and foundry-zksync toolchains, the canonical Bridge,
+  and Blockscout-based block explorers.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Layer 2
+  - Ethereum
+  - zkEVM
+  - ZK Rollup
+  - Account Abstraction
+  - Paymaster
+  - ZK Stack
+  - Bridge
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - aid: zksync:era-mainnet-rpc
+    name: zkSync Era Mainnet JSON-RPC
+    description: >-
+      JSON-RPC endpoint for zkSync Era mainnet (chain ID 324). Implements standard
+      eth_* methods plus zks_* extensions for L1 batch info, fee estimation, bridge
+      contracts, paymaster params, token addresses, and proof generation status.
+    humanURL: https://docs.zksync.io/build/api-reference/api
+    baseURL: https://mainnet.era.zksync.io
+    tags:
+      - JSON-RPC
+      - Mainnet
+      - zkSync Era
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/api-reference/api
+  - aid: zksync:era-sepolia-rpc
+    name: zkSync Era Sepolia JSON-RPC
+    description: >-
+      JSON-RPC endpoint for the zkSync Era Sepolia testnet (chain ID 300) used for
+      development, contract deployment, and integration testing.
+    humanURL: https://docs.zksync.io/build/api-reference/api
+    baseURL: https://sepolia.era.zksync.dev
+    tags:
+      - JSON-RPC
+      - Testnet
+      - Sepolia
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/api-reference/api
+  - aid: zksync:era-websocket
+    name: zkSync Era WebSocket
+    description: >-
+      WebSocket variant of the zkSync Era JSON-RPC endpoint for real-time eth_*
+      subscriptions (newHeads, logs, pendingTransactions) and zks_* subscriptions.
+    humanURL: https://docs.zksync.io/build/api-reference/api
+    baseURL: wss://mainnet.era.zksync.io/ws
+    tags:
+      - WebSocket
+      - Subscriptions
+      - Real-Time
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/api-reference/api
+  - aid: zksync:zksync-ethers
+    name: zksync-ethers SDK
+    description: >-
+      TypeScript SDK built on top of ethers.js that adds zkSync-specific providers,
+      signers, paymaster helpers, account-abstraction utilities, deposit and
+      withdrawal flows, and contract factories.
+    humanURL: https://sdk.zksync.io/js/ethers
+    baseURL: https://github.com/zksync-sdk/zksync-ethers
+    tags:
+      - SDK
+      - TypeScript
+      - Ethers
+    properties:
+      - type: Documentation
+        url: https://sdk.zksync.io/js/ethers
+      - type: Repository
+        url: https://github.com/zksync-sdk/zksync-ethers
+  - aid: zksync:zksync-go
+    name: zksync2-go SDK
+    description: >-
+      Official Go SDK for zkSync Era with support for transactions, EIP-712 typed
+      data, paymasters, deposits, and withdrawals.
+    humanURL: https://sdk.zksync.io/go
+    baseURL: https://github.com/zksync-sdk/zksync2-go
+    tags:
+      - SDK
+      - Go
+    properties:
+      - type: Documentation
+        url: https://sdk.zksync.io/go
+      - type: Repository
+        url: https://github.com/zksync-sdk/zksync2-go
+  - aid: zksync:hardhat-zksync
+    name: hardhat-zksync
+    description: >-
+      Suite of Hardhat plugins for zkSync development — compile, deploy, verify, run
+      local nodes, upgrade contracts, and integrate with the zkVM toolchain.
+    humanURL: https://docs.zksync.io/build/tooling/hardhat
+    baseURL: https://github.com/matter-labs/hardhat-zksync
+    tags:
+      - Hardhat
+      - Plugin
+      - Tooling
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/tooling/hardhat
+      - type: Repository
+        url: https://github.com/matter-labs/hardhat-zksync
+  - aid: zksync:foundry-zksync
+    name: foundry-zksync
+    description: >-
+      Fork of Foundry (forge / cast / anvil) with first-class zkSync support for
+      compiling, testing, scripting, and deploying contracts to zkSync Era and
+      ZK-Stack chains.
+    humanURL: https://docs.zksync.io/build/tooling/foundry/overview
+    baseURL: https://github.com/matter-labs/foundry-zksync
+    tags:
+      - Foundry
+      - Tooling
+      - zkEVM
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/tooling/foundry/overview
+      - type: Repository
+        url: https://github.com/matter-labs/foundry-zksync
+  - aid: zksync:bridge
+    name: zkSync Era Bridge
+    description: >-
+      Canonical cross-chain bridge between Ethereum L1 and zkSync Era for ETH and
+      ERC-20 tokens. The Portal also exposes bridging across ZK Chains in the
+      Elastic Network.
+    humanURL: https://portal.zksync.io/bridge
+    baseURL: https://portal.zksync.io/bridge
+    tags:
+      - Bridge
+      - L1
+      - L2
+      - Canonical
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/build/developer-reference/bridging
+      - type: App
+        url: https://portal.zksync.io/bridge
+  - aid: zksync:zk-stack
+    name: ZK Stack
+    description: >-
+      Open-source framework (zksync-era + era-contracts) for deploying customizable
+      ZK Chains that share liquidity and security through the Elastic Network shared
+      bridge.
+    humanURL: https://docs.zksync.io/zk-stack
+    baseURL: https://github.com/matter-labs/zksync-era
+    tags:
+      - ZK Stack
+      - Elastic Network
+      - Appchains
+    properties:
+      - type: Documentation
+        url: https://docs.zksync.io/zk-stack
+      - type: Repository
+        url: https://github.com/matter-labs/zksync-era
+  - aid: zksync:explorer-api
+    name: zkSync Era Block Explorer API
+    description: >-
+      Official Blockscout-based block explorer for zkSync Era with REST API exposing
+      blocks, batches, transactions, addresses, contracts, and token data.
+    humanURL: https://explorer.zksync.io
+    baseURL: https://block-explorer-api.mainnet.zksync.io
+    tags:
+      - Block Explorer
+      - API
+      - Blockscout
+    properties:
+      - type: Website
+        url: https://explorer.zksync.io
+common:
+  - type: Website
+    url: https://zksync.io
+  - type: Documentation
+    url: https://docs.zksync.io
+  - type: SDKDocs
+    url: https://sdk.zksync.io
+  - type: GitHub
+    url: https://github.com/matter-labs
+  - type: GitHubSDK
+    url: https://github.com/zksync-sdk
+  - type: Portal
+    url: https://portal.zksync.io
+  - type: Explorer
+    url: https://explorer.zksync.io
+  - type: Status
+    url: https://uptime.com/s/zksync
+  - type: Twitter
+    url: https://x.com/zksync
+  - type: TwitterDevs
+    url: https://x.com/zksyncDevs
+  - type: Discord
+    url: https://join.zksync.dev
+  - type: Blog
+    url: https://zksync.mirror.xyz
+integrations:
+  - name: Ethereum
+  - name: Alchemy
+  - name: QuickNode
+  - name: Infura
+  - name: Chainstack
+  - name: The Graph
+  - name: Blockscout
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
