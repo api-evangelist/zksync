@@ -21,7 +21,7 @@ tags:
   - ZK Stack
   - Bridge
 created: '2026-05-23'
-modified: '2026-05-23'
+modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
   - aid: zksync:era-mainnet-rpc
@@ -67,6 +67,8 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.zksync.io/build/api-reference/api
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/zksync/refs/heads/main/asyncapi/zksync-asyncapi.yml
   - aid: zksync:zksync-ethers
     name: zksync-ethers SDK
     description: >-

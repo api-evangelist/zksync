@@ -1,0 +1,301 @@
+asyncapi: 2.6.0
+info:
+  title: zkSync Era WebSocket JSON-RPC PubSub API
+  version: 1.0.0
+  description: >-
+    AsyncAPI description for the zkSync Era WebSocket JSON-RPC PubSub endpoint.
+    zkSync Era is fully compatible with Geth's pubsub API, except for the
+    `syncing` subscription. Clients open a WebSocket connection to the
+    endpoint and use the standard `eth_subscribe` / `eth_unsubscribe`
+    JSON-RPC methods to manage subscriptions. Notifications are delivered
+    as JSON-RPC 2.0 `eth_subscription` messages on the same connection.
+  contact:
+    name: Matter Labs
+    url: https://docs.zksync.io
+  license:
+    name: Documentation
+    url: https://docs.zksync.io/zksync-protocol/api/pub-sub-rpc
+servers:
+  mainnet:
+    url: mainnet.era.zksync.io/ws
+    protocol: wss
+    description: zkSync Era Mainnet WebSocket JSON-RPC endpoint (chain ID 324).
+defaultContentType: application/json
+channels:
+  /:
+    description: >-
+      Single bidirectional WebSocket channel carrying JSON-RPC 2.0 request,
+      response, and notification messages. Clients send `eth_subscribe`
+      requests to open a subscription, then receive `eth_subscription`
+      notifications until they call `eth_unsubscribe`.
+    publish:
+      operationId: sendJsonRpcRequest
+      summary: Send a JSON-RPC 2.0 request from the client to the zkSync Era node.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/EthSubscribeRequest'
+          - $ref: '#/components/messages/EthUnsubscribeRequest'
+    subscribe:
+      operationId: receiveJsonRpcMessage
+      summary: Receive JSON-RPC 2.0 responses and subscription notifications.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/EthSubscribeResponse'
+          - $ref: '#/components/messages/EthUnsubscribeResponse'
+          - $ref: '#/components/messages/NewHeadsNotification'
+          - $ref: '#/components/messages/LogsNotification'
+          - $ref: '#/components/messages/NewPendingTransactionsNotification'
+          - $ref: '#/components/messages/JsonRpcError'
+components:
+  messages:
+    EthSubscribeRequest:
+      name: eth_subscribe
+      title: eth_subscribe
+      summary: >-
+        Open a new subscription. First parameter is the subscription type
+        name (`newHeads`, `logs`, or `newPendingTransactions`). For `logs`
+        an optional filter object may be supplied as the second parameter.
+        zkSync Era does NOT support the `syncing` subscription.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, id, method, params]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          id:
+            oneOf:
+              - type: integer
+              - type: string
+          method:
+            type: string
+            const: eth_subscribe
+          params:
+            type: array
+            minItems: 1
+            maxItems: 2
+            items:
+              oneOf:
+                - type: string
+                  enum: [newHeads, logs, newPendingTransactions]
+                - $ref: '#/components/schemas/LogFilter'
+    EthUnsubscribeRequest:
+      name: eth_unsubscribe
+      title: eth_unsubscribe
+      summary: Cancel an existing subscription by ID.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, id, method, params]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          id:
+            oneOf:
+              - type: integer
+              - type: string
+          method:
+            type: string
+            const: eth_unsubscribe
+          params:
+            type: array
+            minItems: 1
+            maxItems: 1
+            items:
+              type: string
+              description: Subscription ID returned by a prior eth_subscribe call.
+    EthSubscribeResponse:
+      name: eth_subscribe_response
+      title: eth_subscribe response
+      summary: JSON-RPC response returning a subscription ID for an eth_subscribe call.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, id, result]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          id:
+            oneOf:
+              - type: integer
+              - type: string
+          result:
+            type: string
+            description: Hex-encoded subscription ID.
+    EthUnsubscribeResponse:
+      name: eth_unsubscribe_response
+      title: eth_unsubscribe response
+      summary: JSON-RPC response confirming a subscription was cancelled.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, id, result]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          id:
+            oneOf:
+              - type: integer
+              - type: string
+          result:
+            type: boolean
+    NewHeadsNotification:
+      name: newHeads
+      title: newHeads notification
+      summary: Notification delivered when a new block header is produced on zkSync Era.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, method, params]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          method:
+            type: string
+            const: eth_subscription
+          params:
+            type: object
+            required: [subscription, result]
+            properties:
+              subscription:
+                type: string
+                description: Subscription ID this notification belongs to.
+              result:
+                $ref: '#/components/schemas/BlockHeader'
+    LogsNotification:
+      name: logs
+      title: logs notification
+      summary: Notification delivered when a new log entry matches the filter.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, method, params]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          method:
+            type: string
+            const: eth_subscription
+          params:
+            type: object
+            required: [subscription, result]
+            properties:
+              subscription:
+                type: string
+              result:
+                $ref: '#/components/schemas/Log'
+    NewPendingTransactionsNotification:
+      name: newPendingTransactions
+      title: newPendingTransactions notification
+      summary: Notification with the transaction hash of a new pending transaction.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, method, params]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          method:
+            type: string
+            const: eth_subscription
+          params:
+            type: object
+            required: [subscription, result]
+            properties:
+              subscription:
+                type: string
+              result:
+                type: string
+                description: 32-byte transaction hash (hex-encoded).
+    JsonRpcError:
+      name: jsonrpc_error
+      title: JSON-RPC error
+      summary: Error response envelope.
+      contentType: application/json
+      payload:
+        type: object
+        required: [jsonrpc, id, error]
+        properties:
+          jsonrpc:
+            type: string
+            const: '2.0'
+          id:
+            oneOf:
+              - type: integer
+              - type: string
+              - type: 'null'
+          error:
+            type: object
+            required: [code, message]
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+              data: {}
+  schemas:
+    LogFilter:
+      type: object
+      description: Optional filter object for the `logs` subscription.
+      properties:
+        address:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: One or more 20-byte contract addresses to filter on.
+        topics:
+          type: array
+          description: >-
+            Array of topic filters. Each element may be a 32-byte hex string,
+            null (wildcard), or an array of 32-byte hex strings (OR match).
+          items:
+            oneOf:
+              - type: 'null'
+              - type: string
+              - type: array
+                items:
+                  type: string
+    BlockHeader:
+      type: object
+      description: zkSync Era block header (Geth-compatible shape).
+      properties:
+        number: { type: string }
+        hash: { type: string }
+        parentHash: { type: string }
+        sha3Uncles: { type: string }
+        logsBloom: { type: string }
+        transactionsRoot: { type: string }
+        stateRoot: { type: string }
+        receiptsRoot: { type: string }
+        miner: { type: string }
+        difficulty: { type: string }
+        extraData: { type: string }
+        gasLimit: { type: string }
+        gasUsed: { type: string }
+        timestamp: { type: string }
+        baseFeePerGas: { type: string }
+        nonce: { type: string }
+    Log:
+      type: object
+      description: Ethereum-style event log.
+      properties:
+        removed: { type: boolean }
+        logIndex: { type: string }
+        transactionIndex: { type: string }
+        transactionHash: { type: string }
+        blockHash: { type: string }
+        blockNumber: { type: string }
+        address: { type: string }
+        data: { type: string }
+        topics:
+          type: array
+          items: { type: string }
