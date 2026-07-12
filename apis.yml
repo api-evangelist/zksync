@@ -184,6 +184,8 @@ apis:
       - type: Website
         url: https://explorer.zksync.io
 common:
+  - type: DomainSecurity
+    url: security/zksync-domain-security.yml
   - type: Website
     url: https://zksync.io
   - type: Documentation
