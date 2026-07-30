@@ -10,7 +10,19 @@ description: >-
   for paymasters, account abstraction, and L1<->L2 messaging), the zksync-ethers /
   zksync2-* SDKs, hardhat-zksync and foundry-zksync toolchains, the canonical Bridge,
   and Blockscout-based block explorers.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zksync.png
 tags:
   - Layer 2
   - Ethereum
