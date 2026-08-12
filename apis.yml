@@ -196,6 +196,9 @@ apis:
       - type: Website
         url: https://explorer.zksync.io
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/zksync-sdk/zksync-ethers/blob/main/LICENSE
   - type: DomainSecurity
     url: security/zksync-domain-security.yml
   - type: Website
