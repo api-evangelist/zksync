@@ -27,6 +27,15 @@ tags:
   - Layer 2
   - Ethereum
   - zkEVM
+  - ZK-Rollup
+  - Account Abstraction
+  - Paymaster
+  - ZK Stack
+  - Bridge
+tags_raw:
+  - Layer 2
+  - Ethereum
+  - zkEVM
   - ZK Rollup
   - Account Abstraction
   - Paymaster
@@ -73,6 +82,10 @@ apis:
     humanURL: https://docs.zksync.io/build/api-reference/api
     baseURL: wss://mainnet.era.zksync.io/ws
     tags:
+      - WebSocket
+      - Subscription
+      - Real-Time
+    tags_raw:
       - WebSocket
       - Subscriptions
       - Real-Time
@@ -189,6 +202,9 @@ apis:
     humanURL: https://explorer.zksync.io
     baseURL: https://block-explorer-api.mainnet.zksync.io
     tags:
+      - Block Explorer
+      - Blockscout
+    tags_raw:
       - Block Explorer
       - API
       - Blockscout
