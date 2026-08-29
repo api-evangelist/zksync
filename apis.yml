@@ -10,6 +10,18 @@ description: >-
   for paymasters, account abstraction, and L1<->L2 messaging), the zksync-ethers /
   zksync2-* SDKs, hardhat-zksync and foundry-zksync toolchains, the canonical Bridge,
   and Blockscout-based block explorers.
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
@@ -212,6 +224,16 @@ apis:
       - type: Website
         url: https://explorer.zksync.io
 common:
+  - type: IssueTracker
+    url: https://github.com/zksync-sdk/zksync-ethers/issues
+  - type: Releases
+    url: https://github.com/zksync-sdk/zksync-ethers/releases
+  - type: SecurityPolicy
+    url: https://github.com/zksync-sdk/zksync-ethers/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/zksync-sdk/zksync-ethers/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/zksync-sdk/zksync-ethers/blob/main/.github/CONTRIBUTING.md
   - type: License
     name: Apache-2.0
     url: https://github.com/zksync-sdk/zksync-ethers/blob/main/LICENSE
