@@ -147,6 +147,10 @@ apis:
     baseURL: https://github.com/matter-labs/hardhat-zksync
     tags:
       - Hardhat
+      - Plugins
+      - Tooling
+    tags_raw:
+      - Hardhat
       - Plugin
       - Tooling
     properties:
