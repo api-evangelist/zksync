@@ -44,6 +44,7 @@ tags:
   - Paymaster
   - ZK Stack
   - Bridge
+  - Real-Time
 tags_raw:
   - Layer 2
   - Ethereum
@@ -53,6 +54,7 @@ tags_raw:
   - Paymaster
   - ZK Stack
   - Bridge
+  - Real-Time
 created: '2026-05-23'
 modified: '2026-05-29'
 specificationVersion: '0.23'
