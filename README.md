@@ -1,4 +1,4 @@
-# zksync
+# zkSync
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,4 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-zkSync (Matter Labs) — Ethereum L2 + ZK Stack + Elastic Network
+zkSync is a family of Ethereum Layer 2 scaling networks from Matter Labs built on zero-knowledge proofs. zkSync Era is the production zkEVM rollup; the ZK Stack is the open-source framework used to deploy ZK Chains that interoperate in the Elastic Network. Developers integrate via standard JSON-RPC (with zkSync-specific extensions for paymasters, account abstraction, and L1<->L2 messaging), the zksync-ethers / zksync2-* SDKs, hardhat-zksync and foundry-zksync toolchains, the canonical Bridge, and Blockscout-based block explorers.
+
+**Areas:** Layer 2 · Ethereum · zkEVM · ZK-Rollup · Account Abstraction · Paymaster · ZK Stack · Bridge · Real-Time
+
+## zkSync on APIs.io
+
+Everything profiled for zkSync is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/zksync/](https://apis.io/providers/zksync/)** — or go straight to one of the APIs or properties below.
+
+### APIs (10)
+
+- [zkSync Era Mainnet JSON-RPC](https://apis.io/apis/zksync/era-mainnet-rpc/) — JSON-RPC endpoint for zkSync Era mainnet (chain ID 324). Implements standard eth_* methods plus zks_* extensions for L1 batch info, fee estimation, bridge…
+- [zkSync Era Sepolia JSON-RPC](https://apis.io/apis/zksync/era-sepolia-rpc/) — JSON-RPC endpoint for the zkSync Era Sepolia testnet (chain ID 300) used for development, contract deployment, and integration testing.
+- [zkSync Era WebSocket](https://apis.io/apis/zksync/era-websocket/) — WebSocket variant of the zkSync Era JSON-RPC endpoint for real-time eth_* subscriptions (newHeads, logs, pendingTransactions) and zks_* subscriptions.
+- [zksync-ethers SDK](https://apis.io/apis/zksync/zksync-ethers/) — TypeScript SDK built on top of ethers.js that adds zkSync-specific providers, signers, paymaster helpers, account-abstraction utilities, deposit and…
+- [zksync2-go SDK](https://apis.io/apis/zksync/zksync-go/) — Official Go SDK for zkSync Era with support for transactions, EIP-712 typed data, paymasters, deposits, and withdrawals.
+- [hardhat-zksync](https://apis.io/apis/zksync/hardhat-zksync/) — Suite of Hardhat plugins for zkSync development — compile, deploy, verify, run local nodes, upgrade contracts, and integrate with the zkVM toolchain.
+- [foundry-zksync](https://apis.io/apis/zksync/foundry-zksync/) — Fork of Foundry (forge / cast / anvil) with first-class zkSync support for compiling, testing, scripting, and deploying contracts to zkSync Era and ZK-Stack…
+- [zkSync Era Bridge](https://apis.io/apis/zksync/bridge/) — Canonical cross-chain bridge between Ethereum L1 and zkSync Era for ETH and ERC-20 tokens. The Portal also exposes bridging across ZK Chains in the Elastic…
+- [ZK Stack](https://apis.io/apis/zksync/zk-stack/) — Open-source framework (zksync-era + era-contracts) for deploying customizable ZK Chains that share liquidity and security through the Elastic Network shared…
+- [zkSync Era Block Explorer API](https://apis.io/apis/zksync/explorer-api/) — Official Blockscout-based block explorer for zkSync Era with REST API exposing blocks, batches, transactions, addresses, contracts, and token data.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [zkSync Era WebSocket JSON-RPC PubSub API](https://apis.io/asyncapis/zksync/zksync-asyncapi/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [/](https://apis.io/channels/zksync/untitled/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [zkSync — asyncapi rules](https://apis.io/rules/zksync/zksync-asyncapi-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Zksync Domain Security](https://apis.io/security/zksync/zksync-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Zksync Plans Pricing](https://apis.io/plans/zksync/zksync-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Zksync Rate Limits](https://apis.io/rate-limits/zksync/zksync-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Zksync Finops](https://apis.io/finops/zksync/zksync-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://zksync.io)
+- [Documentation](https://docs.zksync.io)
+- [Blog](https://zksync.mirror.xyz)
+
+## API Evangelist rating
+
+**Kin Score 35.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 40.6 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 5.3 |
+
+**Agent readiness 14.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/zksync/](https://apis.io/providers/zksync/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for zkSync: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/zksync/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
